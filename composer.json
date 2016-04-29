@@ -1,0 +1,12 @@
+{
+  "name": "agares/blog-generator",
+  "description": "Blog generator, for agares.info",
+  "minimum-stability": "stable",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "agares",
+      "email": "me@agares.info"
+    }
+  ]
+}
