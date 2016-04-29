@@ -8,5 +8,13 @@
       "name": "agares",
       "email": "me@agares.info"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "Agares\\BlogGenerator\\": "src"
+    }
+  },
+  "require": {
+    "league/commonmark": "^0.13"
+  }
 }
