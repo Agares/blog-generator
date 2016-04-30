@@ -19,7 +19,7 @@ class PostGenerator
 		$slugify = new Slugify();
 		$slug = $slugify->slugify($metadata['title']);
 		
-		$filename = $metadata['published'] . '-' . $metadata['version'] . '-' . $slug . '.html';
+		$filename = $metadata['published'] . '-' . $metadata['version'] . '-' . $slug . '.json';
 		$postFile = $post->openFile();
 		
 		$commonmark = new CommonMarkConverter();
@@ -27,7 +27,15 @@ class PostGenerator
 			. $postFile->fread($postFile->getSize());
 		$postContents = $commonmark->convertToHtml($postMarkdown);
 		
-		file_put_contents($outputPath . DIRECTORY_SEPARATOR . $filename, $postContents);
+		$finalPost = json_encode([
+			'title' => $metadata['title'],
+			'slug' => $slug,
+			'published' => $metadata['published'],
+			'version' => $metadata['version'],
+			'html' => $postContents
+		]);
+		
+		file_put_contents($outputPath . DIRECTORY_SEPARATOR . $filename, $finalPost);
 	}
 
 	private function openMetadataFile(\SplFileInfo $post) : \SplFileObject
