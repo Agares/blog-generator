@@ -15,6 +15,7 @@
     }
   },
   "require": {
-    "league/commonmark": "^0.13"
+    "league/commonmark": "^0.13",
+    "cocur/slugify": "^2.1"
   }
 }
